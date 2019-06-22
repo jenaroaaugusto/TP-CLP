@@ -10,7 +10,7 @@ type Pessoa1 struct {
 func Nome(nome string, idade string) (string, string) {
 	var nomes string
 	var endereco string
-	p1 := Pessoa{"0", "j"}
+	p1 := Pessoa1{"0", "j"}
 	p := &p1
 	p.Nome = nome
 

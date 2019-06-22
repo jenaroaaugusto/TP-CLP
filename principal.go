@@ -1,15 +1,10 @@
 package main
 
 import "fmt"
+import "os"
 import Pessoas "./Pessoa"
 
-// import us "/usuario/usuario"
-// import "time"
-
-// import (
-// 	L "./Pessoa"
-// 	C "./usuario"
-// )
+// import Cliente "./Usuario"
 
 type Pessoa struct {
 	// contains filtered or unexported fields
@@ -28,9 +23,10 @@ func (p *Pessoa) GetIdade() string {
 	// fmt.Println(p.Endereço)
 	return p.Endereço
 }
-func (p *Pessoa) GetEndereco() {
+func (p *Pessoa) GetEndereco() string {
 	// p := Pessoa{}
-	fmt.Println(p.Nome)
+	// fmt.Println(p.Nome)
+	return p.Nome
 }
 func (p *Pessoa) SetNome_Pessoa(nome string) {
 	// p := Pessoa{}
@@ -51,10 +47,13 @@ type Cliente struct {
 	Data string
 }
 
-func (p *Pessoa) GetIdade() int {
+func (p *Cliente) GetRG() string {
 	// p := Pessoa{}
-	return p.Endereço
+	return p.RG
 	// fmt.Println(p.Endereço)
+}
+func (p *Cliente) GetData() string {
+	return p.Data
 }
 
 func (p *Cliente) SetRG(RG string) {
@@ -69,6 +68,10 @@ func (p *Cliente) SetData(Data string) {
 func main() {
 	// var nome, cargo string
 	// var idade int
+	// Outra pessoa
+	pes := Pessoas.Pessoa1{Nome: "Luana"}
+	fmt.Print(pes)
+	os.Exit(1)
 	var sum int
 	sum = 0
 	var controle int
