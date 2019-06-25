@@ -81,20 +81,23 @@ func main() {
 				var endereco, nomes string
 				var idade int
 
-				fmt.Println("Digite nome:")
+				fmt.Printf("Digite nome:\n")
 				fmt.Scan(&nomes)
-				fmt.Print("Digite Idade:\n")
+				fmt.Printf("Digite Idade:\n")
 				fmt.Scan(&idade)
 				fmt.Printf("Endereço:\n")
 				fmt.Scan(&endereco)
 				SetDados_Pessoais(nomes, idade, endereco, &pes)
+				break
 
 			case 2:
-				var i Pessoas
-
+				// var i Pessoas
+				for i, V := range pes {
+					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome, V.Idade, V.Endereco)
+				}
 				// fmt.Println("Nome: %s", pes[0].Pessoas.Nome)
-				fmt.Printf("Idade: %d %d \n", len(pes), cap(pes))
-				fmt.Println("Endereço: %s", i.Endereco)
+				// fmt.Printf("Idade: %d %d \n", len(pes), cap(pes))
+				// fmt.Println("Endereço: %s", i.Endereco)
 
 			}
 
