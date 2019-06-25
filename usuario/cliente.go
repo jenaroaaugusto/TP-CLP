@@ -8,13 +8,13 @@ import (
 )
 
 type Cliente struct {
-	Pessoas.Pessoa
+	Pessoas.Pessoas
 	RG   string
 	Data string
 }
 
-func (p *Cliente) GetRG() string {
-	// p := Pessoa{}
+func GetRG() string {
+	var p Cliente
 	return p.RG
 	// fmt.Println(p.Endereço)
 }
@@ -33,6 +33,6 @@ func (p *Cliente) SetData(Data string) {
 
 func (p *Cliente) Estou_vivo() {
 	fmt.Print("\nEu vim aqui\n")
-	fmt.Println(p.Pessoa.Nome)
+	fmt.Println(p.Pessoas.Nome)
 
 }

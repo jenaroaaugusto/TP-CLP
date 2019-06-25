@@ -1,35 +1,40 @@
 package Pessoa
 
-type Pessoa struct {
+import "fmt"
+
+type Pessoas struct {
 	Nome     string
 	Idade    int
 	Endereco string
+	Lulu     int
 }
 
-func (p *Pessoa) GetNome_Pessoa() string {
-	// p := Pessoa{}
+func Nomesdo() {
+	fmt.Println("Estou aqui")
+}
+func (p *Pessoas) GetNome_Pessoa() string {
+
 	// fmt.Println(p.Nome)
 	return p.Nome
 }
-func (p *Pessoa) GetIdade() string {
-	// p := Pessoa{}
-	// fmt.Println(p.Endereço)
-	return p.Endereço
+func (p *Pessoas) GetIdade() string {
+
+	return p.Endereco
 }
-func (p *Pessoa) GetEndereco() string {
-	// p := Pessoa{}
+func GetEndereco() string {
+	var p Pessoas
 	// fmt.Println(p.Nome)
 	return p.Nome
 }
-func (p *Pessoa) SetNome_Pessoa(nome string) {
-	// p := Pessoa{}
+func SetNome_Pessoa(nome string) {
+	var p Pessoas
 	p.Nome = nome
 }
-func (p *Pessoa) SetIdade(idade int) {
-	// p := Pessoa{}
+func (p *Pessoas) SetIdade(idade int) {
+
 	p.Idade = idade
 
 }
-func (p *Pessoa) SetEndereço(endereço string) {
-	p.Endereço = endereço
+func (p *Pessoas) SetEndereço(endereço string) {
+	p.Endereco = endereço
 }
