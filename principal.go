@@ -14,8 +14,11 @@ type Pessoas struct {
 
 type Cliente struct {
 	Pessoas
-	RG   string
-	Data string
+	Nome     string
+	Idade    int
+	Endereco string
+	RG       string
+	Data     string
 }
 
 func Nomesdo() {
@@ -50,13 +53,10 @@ func SetDados_Pessoais(nome string, idade int, endereço string, a *[]Pessoas) {
 
 }
 
-func (p *Cliente) SetRG(RG string) {
-
-	p.RG = RG
-}
-func (p *Cliente) SetData(Data string) {
-
-	p.Data = Data
+func SetDados_Clientes(nome string, idade int, endereço string, rg string, data string, cli *[]Cliente) {
+	// var c Cliente
+	// fmt.Print(c.Pessoas.Idade)
+	*cli = append(*cli, Cliente{Nome: nome, Idade: idade, Endereco: endereço, RG: rg, Data: data})
 }
 
 func main() {
@@ -64,6 +64,7 @@ func main() {
 	var sum int
 	sum = 0
 	var pes []Pessoas
+	var cli []Cliente
 
 	for sum != 10 {
 		fmt.Println("\n1: Gereciar Pessoas 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
@@ -74,6 +75,7 @@ func main() {
 		fmt.Scan(&controle)
 		switch controle {
 		case 1:
+			fmt.Printf("\n ||| Pessoas ||| \n")
 			fmt.Printf("\n 1:Cadastrar \t 2: Visualizar \n")
 			fmt.Scan(&controle1)
 			switch controle1 {
@@ -91,20 +93,41 @@ func main() {
 				break
 
 			case 2:
-				// var i Pessoas
 				for i, V := range pes {
 					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome, V.Idade, V.Endereco)
 				}
-				// fmt.Println("Nome: %s", pes[0].Pessoas.Nome)
-				// fmt.Printf("Idade: %d %d \n", len(pes), cap(pes))
-				// fmt.Println("Endereço: %s", i.Endereco)
-
+				break
 			}
 
 		case 2:
-			fmt.Printf("\n Sou um Cliente\n")
-			// var c Cli.Cliente
-			// fmt.Printf(c.RG)
+			fmt.Printf("\n ||| Cliente ||| \n")
+
+			fmt.Printf("\n 1:Cadastrar \t 2: Visualizar 3:Associar \n")
+			fmt.Scan(&controle1)
+			switch controle1 {
+			case 1:
+				var endereco, nomes, rg, data string
+				var idade int
+
+				fmt.Printf("Digite nome:\n")
+				fmt.Scan(&nomes)
+				fmt.Printf("Digite Idade:\n")
+				fmt.Scan(&idade)
+				fmt.Printf("Endereço:\n")
+				fmt.Scan(&endereco)
+				fmt.Printf("RG:")
+				fmt.Scan(&rg)
+				fmt.Printf("Data:")
+				fmt.Scan(&data)
+				SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
+				break
+
+			case 2:
+				for i, V := range cli {
+					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome)
+				}
+				break
+			}
 		case 3:
 			fmt.Printf("\nProduto\n ")
 		case 4:
