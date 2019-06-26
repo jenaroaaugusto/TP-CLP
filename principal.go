@@ -14,11 +14,18 @@ type Pessoas struct {
 
 type Cliente struct {
 	Pessoas
+	ID       int
 	Nome     string
 	Idade    int
 	Endereco string
 	RG       string
 	Data     string
+}
+type Produto struct {
+	ID     int
+	Codigo int
+	Nome   string
+	Valor  float32
 }
 
 func Nomesdo() {
@@ -129,7 +136,34 @@ func main() {
 				break
 			}
 		case 3:
-			fmt.Printf("\nProduto\n ")
+			fmt.Printf("\n ||| Produto ||| \n")
+			fmt.Printf("\n 1:Cadastrar Produto \t 2: Visualizar 3:Comprar 4: Lista de Cliente \n")
+			fmt.Scan(&controle1)
+			switch controle1 {
+			case 1:
+				var endereco, nomes, rg, data string
+				var idade int
+
+				fmt.Printf("Digite nome:\n")
+				fmt.Scan(&nomes)
+				fmt.Printf("Digite Preço:\n")
+				fmt.Scan(&idade)
+				fmt.Printf("Endereço:\n")
+				fmt.Scan(&endereco)
+				fmt.Printf("RG:")
+				fmt.Scan(&rg)
+				fmt.Printf("Data:")
+				fmt.Scan(&data)
+				SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
+				break
+
+			case 2:
+				for i, V := range cli {
+					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome)
+				}
+				break
+			}
+
 		case 4:
 			fmt.Printf("\nTotalizavel\n")
 		case 5:
