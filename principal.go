@@ -13,13 +13,10 @@ type Pessoas struct {
 }
 
 type Cliente struct {
+	ID   int
+	RG   string
+	Data string
 	Pessoas
-	ID       int
-	Nome     string
-	Idade    int
-	Endereco string
-	RG       string
-	Data     string
 }
 type Produto struct {
 	ID     int
@@ -62,8 +59,15 @@ func SetDados_Pessoais(nome string, idade int, endereço string, a *[]Pessoas) {
 
 func SetDados_Clientes(nome string, idade int, endereço string, rg string, data string, cli *[]Cliente) {
 	// var c Cliente
-	// fmt.Print(c.Pessoas.Idade)
-	*cli = append(*cli, Cliente{Nome: nome, Idade: idade, Endereco: endereço, RG: rg, Data: data})
+	// c.Pessoas.Nome = nome
+	// fmt.Print(c.Pessoas.Nome)
+	// c := new(Cliente)
+	fmt.Print("\n")
+	// c.Nome = nome
+	// c.Pessoas.Nome = nome
+	// c := &Cliente{Nome: nome, Idade: idade, Endereco: endereço, RG: rg, Data: data, Pessoas: Pessoas{nome, idade, "Beli"}}
+	*cli = append(*cli, Cliente{RG: rg, Data: data, Pessoas: Pessoas{nome, idade, endereço}})
+
 }
 
 func main() {
@@ -127,11 +131,12 @@ func main() {
 				fmt.Printf("Data:")
 				fmt.Scan(&data)
 				SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
+				fmt.Print(cli[0].Pessoas.Nome)
 				break
 
 			case 2:
 				for i, V := range cli {
-					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome)
+					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco)
 				}
 				break
 			}
