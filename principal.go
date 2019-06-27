@@ -117,7 +117,7 @@ func main() {
 		var NumerodaVenda int
 
 		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
-		fmt.Println("\n 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
+		fmt.Println("\n 2:Cliente 3:Produto 4:Venda 5: Sair")
 		fmt.Scan(&controle)
 
 		switch controle {
@@ -329,13 +329,12 @@ func main() {
 		//Venda
 		case 4:
 			fmt.Printf("\nVenda\n")
-			fmt.Printf("\n 1:Fazer Venda \t 2: Visualizar 3:Alterar 4:Remover  \n")
+			fmt.Printf("\n 1:Fazer Venda \t 2: Visualizar 3:Remover  \n")
 			fmt.Scan(&controle1)
 			switch controle1 {
 			// Fazer a venda
 
 			case 1:
-				NumerodaVenda = NumerodaVenda + 1
 
 				for i, V := range cli {
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
@@ -368,15 +367,25 @@ func main() {
 				nam = pro[idp1].Nome
 				valor := pro[idp1].Valor
 
-				// ItemVenda=append(ItemVenda,Produto: Produto{Codigo:pro[idp1].Codigo,Nome:pro[idp1].Nome}, Quantidade:idp2)
-				// proaux=append(proaux,resultado)
 				fmt.Printf("Data:\n")
 				fmt.Scan(&datavenda)
 				lista(NumerodaVenda, &iten, nam, cod, valor, idp2)
 				Total(NumerodaVenda, &ven, id, idp1, idp2, datavenda, nome2, Idade2, rg2, data2, end2, &iten, nam, cod, valor)
-				// ven[0].ItemVenda = vcs
-				copy(ven[0].ItemVenda, iten)
 
+				copy(ven[NumerodaVenda].ItemVenda, iten)
+				fmt.Println(ven)
+				NumerodaVenda = NumerodaVenda + 1
+
+			case 2:
+
+				for i, V := range ven {
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+					fmt.Printf("ID: %d \t Numero da Venda:%d Data: %s Cliente: Nome:%s RG %s \n  ", i, V.Numero, V.Data, V.cliente.Nome, V.cliente.RG)
+					for j := 0; j < len(V.ItemVenda); j++ {
+						fmt.Printf("ID %d Produto: Codigo %d \t Nome:%s \t Valor: %.2f  \n", j, V.ItemVenda[j].Produto.Codigo, V.ItemVenda[j].Produto.Nome, V.ItemVenda[j].Valor)
+					}
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+				}
 			}
 
 		//Sair
