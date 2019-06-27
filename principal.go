@@ -190,6 +190,9 @@ func main() {
 						fmt.Scan(&controle)
 						cli[controle3].Pessoas.Idade = controle
 					} else if controle4 == 3 {
+						fmt.Printf("Digite o novo Endereço:")
+						fmt.Scanf(&controlepalavras)
+						cli[controle3].Pessoas.Endereco = controlepalavras
 
 					} else if controle4 == 4 {
 
