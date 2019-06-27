@@ -34,12 +34,6 @@ type Produto struct {
 	Valor  float32
 }
 
-type Totalizavel interface{
-	func total()
-	type Venda struct
-}
-
-
 // type Totalizavel interface{
 // 	// func Total()
 // 	// type Venda struct{}
@@ -88,9 +82,9 @@ func Somas(valor float32, Numero int) float32 {
 }
 
 // &ven, &cli, id, idp1, idp2
-func Total(NumerodaVenda int, ven *[]Venda, id int, idp1 int, idp2 int, datavenda string, nome string, idade int, rg string, data string, endereço string, iten *[]ItemVenda, nam string, cod int, valor float32, idp2 int) {
+func Total(NumerodaVenda int, ven *[]Venda, id int, idp1 int, idp2 int, datavenda string, nome string, idade int, rg string, data string, endereço string, iten *[]ItemVenda, nam string, cod int, valor float32) {
 
-	*ven = append(*ven, Venda{Numero: NumerodaVenda, Data: datavenda, cliente: Cliente{RG: rg, Data: data, Pessoas: Pessoas{nome, idade, endereço}}, ItemVenda[0]: ItemVenda})
+	*ven = append(*ven, Venda{Numero: NumerodaVenda, Data: datavenda, cliente: Cliente{RG: rg, Data: data, Pessoas: Pessoas{nome, idade, endereço}}})
 }
 func lista(NumerodaVenda int, vcs *[]ItemVenda, nam string, cod int, valor float32, idp2 int) {
 	var resultado float32
@@ -106,9 +100,6 @@ func main() {
 	var pes []Pessoas
 	var cli []Cliente
 	var pro []Produto
-	// var proaux []float32
-
-	// Produto
 	var ven []Venda
 
 	var iten []ItemVenda
@@ -123,7 +114,7 @@ func main() {
 		var controle int
 		var controlepalavras string
 		var controleFloat float32
-		//var NumerodaVenda int
+		var NumerodaVenda int
 
 		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
 		fmt.Println("\n 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
@@ -368,14 +359,7 @@ func main() {
 					fmt.Printf("ID: %d \t Codigo %d \t Nome: %s \t Valor: %.2f  \n", i, V.Codigo, V.Nome, V.Valor)
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
 				}
-				// Produto
-				// Codigo int
-				// Nome   string
-				// Valor  float32
-				// item
-				// Produto    Produto
-				// Quantidade int
-				// Valor      float32
+
 				fmt.Printf("Produto ID - Numero de produtos:\n")
 				fmt.Scan(&idp1, &idp2)
 				var nam string
@@ -389,7 +373,9 @@ func main() {
 				fmt.Printf("Data:\n")
 				fmt.Scan(&datavenda)
 				lista(NumerodaVenda, &iten, nam, cod, valor, idp2)
-				Total(NumerodaVenda, &ven, id, idp1, idp2, datavenda, nome2, Idade2, rg2, data2, end2, &iten, nam, cod, valor, idp2)
+				Total(NumerodaVenda, &ven, id, idp1, idp2, datavenda, nome2, Idade2, rg2, data2, end2, &iten, nam, cod, valor)
+				// ven[0].ItemVenda = vcs
+				copy(ven[0].ItemVenda, iten)
 
 			}
 
