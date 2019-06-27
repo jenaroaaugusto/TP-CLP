@@ -41,17 +41,16 @@ type Produto struct {
 // Venda(subclasse  de  Totalizavel):  número  (int),  data  (Date),  cliente
 // (Cliente), itens (lista ou array de ItemVenda).O método total deve calcular a soma dos totais de cada item;
 type Venda struct {
-	Numero    int
-	Data      string
-	cliente   Cliente
-	ItemVenda []ItemVenda
+	Numero  int
+	Data    string
+	cliente Cliente
+	// ItemVenda []ItemVenda
 }
 
 func SetDados_Pessoais(nome string, idade int, endereço string, a *[]Pessoas) {
 	*a = append(*a, Pessoas{Nome: nome, Idade: idade, Endereco: endereço})
 
 }
-
 func SetDados_Clientes(nome string, idade int, endereço string, rg string, data string, cli *[]Cliente) {
 
 	fmt.Print("\n")
@@ -59,14 +58,11 @@ func SetDados_Clientes(nome string, idade int, endereço string, rg string, data
 	*cli = append(*cli, Cliente{RG: rg, Data: data, Pessoas: Pessoas{nome, idade, endereço}})
 
 }
-
 func SetDados_Produto(codigo int, nome string, valor float32, pro *[]Produto) {
 	*pro = append(*pro, Produto{Codigo: codigo, Nome: nome, Valor: valor})
 
 }
-func SetVenda() {
-
-}
+func SetVenda() {}
 func removeCliente(slice []Cliente, s int) []Cliente {
 
 	slice = append(slice[:s], slice[s+1:]...)
@@ -78,9 +74,11 @@ func removeProduto(slice []Produto, s int) []Produto {
 	return slice
 }
 
-// func Total(){
+// &ven, &cli, id, idp1, idp2
+func Total(NumerodaVenda int, ven *[]Venda, id int, idp1 int, idp2 int, datavenda string, nome string, idade int, rg string, data string, endereço string) {
 
-// }
+	*ven = append(*ven, Venda{Numero: NumerodaVenda, Data: datavenda, cliente: Cliente{RG: rg, Data: data, Pessoas: Pessoas{nome, idade, endereço}}})
+}
 
 func main() {
 
@@ -90,10 +88,10 @@ func main() {
 	var cli []Cliente
 	var pro []Produto
 	// var proaux []Produto
-	// var ven []Venda
-	// // var iten
-	var id, idp1, idp2 int
-	//  idp3, idp4, idp5 int
+	var ven []Venda
+	// var iten
+	var id, idp1, idp2 int //idp3, idp4, idp5 int
+	var datavenda string
 
 	for sum != 10 {
 		var controle1 int
@@ -101,6 +99,7 @@ func main() {
 		var controle4 int
 		var controle int
 		var controlepalavras string
+		var NumerodaVenda int
 
 		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
 		fmt.Println("\n 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
@@ -291,7 +290,7 @@ func main() {
 			// Fazer a venda
 
 			case 1:
-
+				NumerodaVenda = NumerodaVenda + 1
 				for i, V := range cli {
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
 					fmt.Printf("ID %d Nome: %s \t Idade: %d \nRG:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.RG)
@@ -299,6 +298,11 @@ func main() {
 				}
 				fmt.Printf("Selecionar Cliente ID :\n")
 				fmt.Scan(&id)
+				nome2 := cli[id].Pessoas.Nome
+				Idade2 := cli[id].Pessoas.Idade
+				rg2 := cli[id].RG
+				data2 := cli[id].Data
+				end2 := cli[id].Pessoas.Endereco
 
 				// SetVenda(&Venda,&cli[],id)
 				// var id, idp1,idp2,idp3,idp4,idp5 int
@@ -312,7 +316,9 @@ func main() {
 
 				fmt.Printf("Produto ID - Numero de produtos:\n")
 				fmt.Scan(&idp1, &idp2)
-				// Total()
+				fmt.Printf("Data:\n")
+				fmt.Scan(&datavenda)
+				Total(NumerodaVenda, &ven, id, idp1, idp2, datavenda, nome2, Idade2, rg2, data2, end2)
 			}
 
 		//Sair
