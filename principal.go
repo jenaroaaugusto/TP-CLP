@@ -80,10 +80,10 @@ func main() {
 		var controle4 int
 		var controle int
 		var controlepalavras string
+
 		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
 		fmt.Println("\n1: Gereciar Pessoas 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
 		fmt.Scan(&controle)
-
 		// var pes [100]Pessoas
 		switch controle {
 				//Gerencias Pessoas
@@ -107,7 +107,9 @@ func main() {
 
 					case 2:
 						for i, V := range pes {
+							fmt.Printf("\n-----------------------------------------------------------------------------\n")
 							fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome, V.Idade, V.Endereco)
+							fmt.Printf("\n-----------------------------------------------------------------------------\n")
 						}
 						break
 					}
@@ -116,7 +118,7 @@ func main() {
 				case 2:
 					fmt.Printf("\n ||| Cliente ||| \n")
 
-					fmt.Printf("\n 1:Cadastrar Cliente \t 2: Visualizar 3:Alterar  \n")
+					fmt.Printf("\n 1:Cadastrar Cliente \t 2: Visualizar \t 3:Alterar  \n")
 					fmt.Scan(&controle1)
 					switch controle1 {
 							//Cadastrar
@@ -137,11 +139,12 @@ func main() {
 								SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
 								fmt.Print(cli[0].Pessoas.Nome)
 
-							//Visuzalizar os dados
+							//Visualizar os dados
 							case 2:
 								for i, V := range cli {
 									fmt.Printf("\n-----------------------------------------------------------------------------\n")
-									fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco)
+									fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n",
+										i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco)
 									fmt.Printf("\n-----------------------------------------------------------------------------\n")
 								}
 
@@ -151,7 +154,8 @@ func main() {
 								fmt.Printf("Escolha pelo ID")
 								for i, V := range cli {
 									fmt.Printf("\n-----------------------------------------------------------------------------\n")
-									fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n RG:%s \t Data:", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco, V.RG)
+									fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n RG:%s \t Data:",
+										i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco, V.RG)
 									fmt.Printf("\n-----------------------------------------------------------------------------\n")
 								}
 								fmt.Printf("\nDigite ID\n")
@@ -162,18 +166,22 @@ func main() {
 									fmt.Printf("\n Alterar selecione-:> 1:Nome 2:Idade 3:Endereço 4:RG  5:Concluido\n")
 									fmt.Scan(&controle4)
 									if controle4 == 1{
-										fmt.Printf("Digite o novo nome:")
+										fmt.Printf("Digite o novo nome: ")
 										fmt.Scan(&controlepalavras)
-										cli[controle3].Pessoas.Nome=controlepalavras
+										cli[controle3].Pessoas.Nome = controlepalavras
 
 									}else if controle4== 2{
-										fmt.Printf("Digite o nova Idade:")
+										fmt.Printf("Digite o nova Idade: ")
 										fmt.Scan(&controle)
-										cli[controle3].Pessoas.Idade=controle
+										cli[controle3].Pessoas.Idade = controle
 									}else if controle4 == 3{
-
+										fmt.Printf("Digite o novo Endereco: ")
+										fmt.Scan(&controlepalavras)
+										cli[controle3].Pessoas.Endereco = controlepalavras
 									}else if controle4 == 4{
-
+										fmt.Printf("Digite o novo RG: ")
+										fmt.Scan(&controlepalavras)
+										cli[controle3].RG = controlepalavras
 									}else if controle4 == 5{
 										interacao= 10
 										break
@@ -184,7 +192,7 @@ func main() {
 				//Produto
 				case 3:
 					fmt.Printf("\n ||| Produto ||| \n")
-					fmt.Printf("\n 1:Cadastrar Produto \t 2: Lista de Cliente \t 3:Comprar 4:  \n")
+					fmt.Printf("\n 1:Cadastrar Produto \t 2: Lista de Cliente \t 3: Comprar 4:  \n")
 					fmt.Scan(&controle1)
 					switch controle1 {
 						//Cadastrar
@@ -208,12 +216,12 @@ func main() {
 					//Lista de Clientes
 					case 2:
 						for i, V := range cli {
+							fmt.Printf("\n-----------------------------------------------------------------------------\n")
 							fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome)
+							fmt.Printf("\n-----------------------------------------------------------------------------\n")
 						}
 						break
 					}
-
-
 
 
 				//Totalizavel
