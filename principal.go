@@ -75,145 +75,155 @@ func main() {
 	var cli []Cliente
 
 	for sum != 10 {
-		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
-		fmt.Println("\n1: Gereciar Pessoas 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
-		var controle int
 		var controle1 int
 		var controle3 int
 		var controle4 int
+		var controle int
 		var controlepalavras string
-		// var pes [100]Pessoas
+		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
+		fmt.Println("\n1: Gereciar Pessoas 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
 		fmt.Scan(&controle)
+
+		// var pes [100]Pessoas
 		switch controle {
-		case 1:
-			fmt.Printf("\n ||| Pessoas ||| \n")
-			fmt.Printf("\n 1:Cadastrar \t 2: Visualizar \n")
-			fmt.Scan(&controle1)
-			switch controle1 {
-			case 1:
-				var endereco, nomes string
-				var idade int
+				//Gerencias Pessoas
+				case 1:
+					fmt.Printf("\n ||| Pessoas ||| \n")
+					fmt.Printf("\n 1:Cadastrar \t 2: Visualizar \n")
+					fmt.Scan(&controle1)
+					switch controle1 {
+					case 1:
+						var endereco, nomes string
+						var idade int
 
-				fmt.Printf("Digite nome:\n")
-				fmt.Scan(&nomes)
-				fmt.Printf("Digite Idade:\n")
-				fmt.Scan(&idade)
-				fmt.Printf("Endereço:\n")
-				fmt.Scan(&endereco)
-				SetDados_Pessoais(nomes, idade, endereco, &pes)
-				break
+						fmt.Printf("Digite nome:\n")
+						fmt.Scan(&nomes)
+						fmt.Printf("Digite Idade:\n")
+						fmt.Scan(&idade)
+						fmt.Printf("Endereço:\n")
+						fmt.Scan(&endereco)
+						SetDados_Pessoais(nomes, idade, endereco, &pes)
+						break
 
-			case 2:
-				for i, V := range pes {
-					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome, V.Idade, V.Endereco)
-				}
-				break
-			}
-
-		case 2:
-			fmt.Printf("\n ||| Cliente ||| \n")
-
-			fmt.Printf("\n 1:Cadastrar Cliente \t 2: Visualizar 3:Alterar  \n")
-			fmt.Scan(&controle1)
-			switch controle1 {
-			case 1:
-				var endereco, nomes, rg, data string
-				var idade int
-
-				fmt.Printf("Digite nome:\n")
-				fmt.Scan(&nomes)
-				fmt.Printf("Digite Idade:\n")
-				fmt.Scan(&idade)
-				fmt.Printf("Endereço:\n")
-				fmt.Scan(&endereco)
-				fmt.Printf("RG:")
-				fmt.Scan(&rg)
-				fmt.Printf("Data:")
-				fmt.Scan(&data)
-				SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
-				fmt.Print(cli[0].Pessoas.Nome)
-				break
-
-			case 2:
-				//Visuzalizar os dados
-				for i, V := range cli {
-					fmt.Printf("\n-----------------------------------------------------------------------------\n")
-					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco)
-					fmt.Printf("\n-----------------------------------------------------------------------------\n")
-				}
-				break
-			case 3:
-				//Realizar alteração
-				fmt.Printf("\n|\t| Alteração dos Clientes |\t|\n")
-				fmt.Printf("Escolha pelo ID")
-				for i, V := range cli {
-					fmt.Printf("\n-----------------------------------------------------------------------------\n")
-					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n RG:%s \t Data:", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco, V.RG)
-					fmt.Printf("\n-----------------------------------------------------------------------------\n")
-				}
-				fmt.Printf("\nDigite ID\n")
-				fmt.Scan(&controle3)
-				// s := len(cli) Tratar os erros
-				for interacao !=10
-					fmt.Printf("\n Alterar selecione-:> 1:Nome 2:Idade 3:Endereço 4:RG  5:Concluido\n")
-					fmt.Scan(&controle4) 
-					if controle4 == 1{
-						fmt.Printf("Digite o novo nome:")
-						fmt.Scan(&controlepalavras)
-						cli[controle3].Pessoas.Nome=controlepalavras
-
-					}else if controle4== 2{
-						fmt.Printf("Digite o nova Idade:")
-						fmt.Scan(&controle)
-						cli[controle3].Pessoas.Idade=controle
-					}else if controle4 == 3{
-
-					}else if controle4 == 4{
-
-					}else if controle4 == 5{
-						interacao= 10
+					case 2:
+						for i, V := range pes {
+							fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome, V.Idade, V.Endereco)
+						}
 						break
 					}
 
-					
-					
+				//Cliente
+				case 2:
+					fmt.Printf("\n ||| Cliente ||| \n")
 
-			}
-		case 3:
-			fmt.Printf("\n ||| Produto ||| \n")
-			fmt.Printf("\n 1:Cadastrar Produto \t 2: Lista de Cliente \t 3:Comprar 4:  \n")
-			fmt.Scan(&controle1)
-			switch controle1 {
-			case 1:
-				var endereco, nomes, rg, data string
-				var idade int
+					fmt.Printf("\n 1:Cadastrar Cliente \t 2: Visualizar 3:Alterar  \n")
+					fmt.Scan(&controle1)
+					switch controle1 {
+							//Cadastrar
+							case 1:
+								var endereco, nomes, rg, data string
+								var idade int
 
-				fmt.Printf("Digite nome:\n")
-				fmt.Scan(&nomes)
-				fmt.Printf("Digite Preço:\n")
-				fmt.Scan(&idade)
-				fmt.Printf("Endereço:\n")
-				fmt.Scan(&endereco)
-				fmt.Printf("RG:")
-				fmt.Scan(&rg)
-				fmt.Printf("Data:")
-				fmt.Scan(&data)
-				SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
-				break
+								fmt.Printf("Digite nome:\n")
+								fmt.Scan(&nomes)
+								fmt.Printf("Digite Idade:\n")
+								fmt.Scan(&idade)
+								fmt.Printf("Endereço:\n")
+								fmt.Scan(&endereco)
+								fmt.Printf("RG:")
+								fmt.Scan(&rg)
+								fmt.Printf("Data:")
+								fmt.Scan(&data)
+								SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
+								fmt.Print(cli[0].Pessoas.Nome)
 
-			case 2:
-				for i, V := range cli {
-					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome)
+							//Visuzalizar os dados
+							case 2:
+								for i, V := range cli {
+									fmt.Printf("\n-----------------------------------------------------------------------------\n")
+									fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco)
+									fmt.Printf("\n-----------------------------------------------------------------------------\n")
+								}
+
+							//Alteração
+							case 3:
+								fmt.Printf("\n|\t| Alteração dos Clientes |\t|\n")
+								fmt.Printf("Escolha pelo ID")
+								for i, V := range cli {
+									fmt.Printf("\n-----------------------------------------------------------------------------\n")
+									fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n RG:%s \t Data:", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco, V.RG)
+									fmt.Printf("\n-----------------------------------------------------------------------------\n")
+								}
+								fmt.Printf("\nDigite ID\n")
+								fmt.Scan(&controle3)
+								// s := len(cli) Tratar os erros
+								var interacao int
+								for (interacao != 10){
+									fmt.Printf("\n Alterar selecione-:> 1:Nome 2:Idade 3:Endereço 4:RG  5:Concluido\n")
+									fmt.Scan(&controle4)
+									if controle4 == 1{
+										fmt.Printf("Digite o novo nome:")
+										fmt.Scan(&controlepalavras)
+										cli[controle3].Pessoas.Nome=controlepalavras
+
+									}else if controle4== 2{
+										fmt.Printf("Digite o nova Idade:")
+										fmt.Scan(&controle)
+										cli[controle3].Pessoas.Idade=controle
+									}else if controle4 == 3{
+
+									}else if controle4 == 4{
+
+									}else if controle4 == 5{
+										interacao= 10
+										break
+									}
+								}
+					}
+
+				//Produto
+				case 3:
+					fmt.Printf("\n ||| Produto ||| \n")
+					fmt.Printf("\n 1:Cadastrar Produto \t 2: Lista de Cliente \t 3:Comprar 4:  \n")
+					fmt.Scan(&controle1)
+					switch controle1 {
+						//Cadastrar
+					case 1:
+						var endereco, nomes, rg, data string
+						var idade int
+
+						fmt.Printf("Digite nome:\n")
+						fmt.Scan(&nomes)
+						fmt.Printf("Digite Preço:\n")
+						fmt.Scan(&idade)
+						fmt.Printf("Endereço:\n")
+						fmt.Scan(&endereco)
+						fmt.Printf("RG:")
+						fmt.Scan(&rg)
+						fmt.Printf("Data:")
+						fmt.Scan(&data)
+						SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
+						break
+
+					//Lista de Clientes
+					case 2:
+						for i, V := range cli {
+							fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Nome)
+						}
+						break
+					}
+
+
+
+
+				//Totalizavel
+				case 4:
+					fmt.Printf("\nTotalizavel\n")
+
+				//Sair
+				case 5:
+					sum = 10
 				}
-				break
-			}
-
-		case 4:
-			fmt.Printf("\nTotalizavel\n")
-		case 5:
-			sum = 10
-		}
-	}
-
 	// checkNumber(getValue())
+}
 }
