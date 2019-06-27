@@ -96,6 +96,14 @@ func lista(NumerodaVenda int, vcs *[]ItemVenda, nam string, cod int, valor float
 	*vcs = append(*vcs, ItemVenda{Produto: Produto{Codigo: cod, Nome: nam}, Quantidade: NumerodaVenda, Valor: resultado})
 
 }
+func tratarErro() {
+    defer func() {
+        if err := recover(); err != nil {
+            fmt.Println("Ocorreu um erro: ", err)
+        }
+    }()
+    
+}
 
 func main() {
 
