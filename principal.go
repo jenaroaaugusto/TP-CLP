@@ -104,7 +104,7 @@ func main() {
 		fmt.Scan(&controle)
 		// var pes [100]Pessoas
 		switch controle {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		//Gerencias Pessoas
 		case 1:
 			fmt.Printf("\n ||| Pessoas ||| \n")
@@ -288,7 +288,12 @@ func main() {
 
 		//Totalizavel
 		case 4:
-			fmt.Printf("\nTotalizavel\n")
+			//var valorTotal float32
+			//var i int
+			//for V := range pro {
+			//	valorTotal += V.Valor
+			//}
+			//fmt.Printf("\nValor total da compra: \n", valorTotal)
 
 		//Sair
 		case 5:
