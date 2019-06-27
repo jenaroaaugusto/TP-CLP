@@ -10,11 +10,10 @@ import "fmt"
 // 	Pes "./Pessoa"
 // 	Cli "./Usuario"
 // )
-type ItemVenda struct{
-	Produto Produto
+type ItemVenda struct {
+	Produto    Produto
 	Quantidade int
-	Valor Produto.valor
-
+	Valor      float32
 }
 type Pessoas struct {
 	Nome     string
@@ -34,18 +33,20 @@ type Produto struct {
 	Nome   string
 	Valor  float32
 }
-type Totalizavel interface{
-	func total()
-	type Venda struct
-}
-// Venda(subclasse  de  Totalizavel):  número  (int),  data  (Date),  cliente  
+
+// type Totalizavel interface{
+// 	// func Total()
+// 	// type Venda struct{}
+// }
+// Venda(subclasse  de  Totalizavel):  número  (int),  data  (Date),  cliente
 // (Cliente), itens (lista ou array de ItemVenda).O método total deve calcular a soma dos totais de cada item;
-type Venda struct{
-	Numero int
-	Data  string
-	cliente Cliente
+type Venda struct {
+	Numero    int
+	Data      string
+	cliente   Cliente
 	ItemVenda []ItemVenda
 }
+
 func SetDados_Pessoais(nome string, idade int, endereço string, a *[]Pessoas) {
 	*a = append(*a, Pessoas{Nome: nome, Idade: idade, Endereco: endereço})
 
@@ -63,6 +64,9 @@ func SetDados_Produto(codigo int, nome string, valor float32, pro *[]Produto) {
 	*pro = append(*pro, Produto{Codigo: codigo, Nome: nome, Valor: valor})
 
 }
+func SetVenda() {
+
+}
 func removeCliente(slice []Cliente, s int) []Cliente {
 
 	slice = append(slice[:s], slice[s+1:]...)
@@ -74,6 +78,10 @@ func removeProduto(slice []Produto, s int) []Produto {
 	return slice
 }
 
+// func Total(){
+
+// }
+
 func main() {
 
 	var sum int
@@ -81,10 +89,11 @@ func main() {
 	var pes []Pessoas
 	var cli []Cliente
 	var pro []Produto
-	var proaux []Produto
-	var ven []Venda
-	// var iten
-	var id int  
+	// var proaux []Produto
+	// var ven []Venda
+	// // var iten
+	var id, idp1, idp2 int
+	//  idp3, idp4, idp5 int
 
 	for sum != 10 {
 		var controle1 int
@@ -96,7 +105,7 @@ func main() {
 		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
 		fmt.Println("\n 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
 		fmt.Scan(&controle)
-		// var pes [100]Pessoas
+
 		switch controle {
 		//Gerencias Pessoas
 		case 1:
@@ -184,13 +193,13 @@ func main() {
 						cli[controle3].Pessoas.Idade = controle
 					} else if controle4 == 3 {
 						fmt.Printf("Digite o novo Endereço:")
-						fmt.Scanf(&controlepalavras)
+						fmt.Scanf(controlepalavras)
 						cli[controle3].Pessoas.Endereco = controlepalavras
 
 					} else if controle4 == 4 {
 						fmt.Printf("Alterar RG:")
-						fmt.Scanf(&controlepalavras)
-						cli[controle3].Pessoas.RG = controlepalavras
+						fmt.Scanf(controlepalavras)
+						cli[controle3].RG = controlepalavras
 					} else if controle4 == 5 {
 						interacao = 10
 						break
@@ -280,19 +289,19 @@ func main() {
 			fmt.Scan(&controle1)
 			switch controle1 {
 			// Fazer a venda
-		
+
 			case 1:
-				
-				
+
 				for i, V := range cli {
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
-					fmt.Printf("ID %d Nome: %s \t Idade: %d \nEndereço:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.Pessoas.Endereco)
+					fmt.Printf("ID %d Nome: %s \t Idade: %d \nRG:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.RG)
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
 				}
 				fmt.Printf("Selecionar Cliente ID :\n")
 				fmt.Scan(&id)
 
-
+				// SetVenda(&Venda,&cli[],id)
+				// var id, idp1,idp2,idp3,idp4,idp5 int
 				fmt.Printf("\n |--| Lista de Produtos |--| \n")
 
 				for i, V := range pro {
@@ -300,25 +309,11 @@ func main() {
 					fmt.Printf("ID: %d \t Codigo %d \t Nome: %s \t Valor: %.2f  \n", i, V.Codigo, V.Nome, V.Valor)
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
 				}
-				
-				// var endereco, nomes, rg, data string
-				// var idade int
 
-
-				// fmt.Printf("Digite nome:\n")
-				// fmt.Scan(&nomes)
-				// fmt.Printf("Digite Idade:\n")
-				// fmt.Scan(&idade)
-				// fmt.Printf("Endereço:\n")
-				// fmt.Scan(&endereco)
-				// fmt.Printf("RG:\n")
-				// fmt.Scan(&rg)
-				// fmt.Printf("Data:\n")
-				// fmt.Scan(&data)
-				// SetDados_Clientes(nomes, idade, endereco, rg, data, &cli)
-				// fmt.Print(cli[0].Pessoas.Nome)
-
-
+				fmt.Printf("Produto ID - Numero de produtos:\n")
+				fmt.Scan(&idp1, &idp2)
+				// Total()
+			}
 
 		//Sair
 		case 5:
