@@ -75,7 +75,11 @@ func removeProduto(slice []Produto, s int) []Produto {
 	slice = append(slice[:s], slice[s+1:]...)
 	return slice
 }
+func removeVenda(slice []Venda, s int) []Venda {
 
+	slice = append(slice[:s], slice[s+1:]...)
+	return slice
+}
 func Somas(valor float32, Numero int) float32 {
 	rar := float32(float32(Numero) * valor)
 	return rar
@@ -386,6 +390,31 @@ func main() {
 					}
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
 				}
+			case 3:
+				fmt.Printf("\n|\t| Remover Venda|\t|\n")
+				fmt.Printf("Escolha pelo ID")
+				for i, V := range ven {
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+					fmt.Printf("ID: %d \t Numero da Venda:%d Data: %s Cliente: Nome:%s RG %s \n  ", i, V.Numero, V.Data, V.cliente.Nome, V.cliente.RG)
+					for j := 0; j < len(V.ItemVenda); j++ {
+						fmt.Printf("ID %d Produto: Codigo %d \t Nome:%s \t Valor: %.2f  \n", j, V.ItemVenda[j].Produto.Codigo, V.ItemVenda[j].Produto.Nome, V.ItemVenda[j].Valor)
+					}
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+				}
+				fmt.Printf("\nDigite ID\n")
+				fmt.Scan(&controle3)
+
+				ven := removeVenda(ven, controle3)
+
+				for i, V := range ven {
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+					fmt.Printf("ID: %d \t Numero da Venda:%d Data: %s Cliente: Nome:%s RG %s \n  ", i, V.Numero, V.Data, V.cliente.Nome, V.cliente.RG)
+					for j := 0; j < len(V.ItemVenda); j++ {
+						fmt.Printf("ID %d Produto: Codigo %d \t Nome:%s \t Valor: %.2f  \n", j, V.ItemVenda[j].Produto.Codigo, V.ItemVenda[j].Produto.Nome, V.ItemVenda[j].Valor)
+					}
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+				}
+
 			}
 
 		//Sair
