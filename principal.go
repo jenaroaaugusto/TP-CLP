@@ -41,10 +41,11 @@ type Produto struct {
 // Venda(subclasse  de  Totalizavel):  número  (int),  data  (Date),  cliente
 // (Cliente), itens (lista ou array de ItemVenda).O método total deve calcular a soma dos totais de cada item;
 type Venda struct {
-	Numero  int
-	Data    string
-	cliente Cliente
-	// ItemVenda []ItemVenda
+	Numero    int
+	Data      string
+	cliente   Cliente
+	ItemVenda []ItemVenda
+	idlista   int
 }
 
 func SetDados_Pessoais(nome string, idade int, endereço string, a *[]Pessoas) {
@@ -74,10 +75,21 @@ func removeProduto(slice []Produto, s int) []Produto {
 	return slice
 }
 
-// &ven, &cli, id, idp1, idp2
-func Total(NumerodaVenda int, ven *[]Venda, id int, idp1 int, idp2 int, datavenda string, nome string, idade int, rg string, data string, endereço string) {
+func Somas(valor float32, Numero int) float32 {
+	rar := float32(float32(Numero) * valor)
+	return rar
+}
 
-	*ven = append(*ven, Venda{Numero: NumerodaVenda, Data: datavenda, cliente: Cliente{RG: rg, Data: data, Pessoas: Pessoas{nome, idade, endereço}}})
+// &ven, &cli, id, idp1, idp2
+func Total(NumerodaVenda int, ven *[]Venda, id int, idp1 int, idp2 int, datavenda string, nome string, idade int, rg string, data string, endereço string, iten *[]ItemVenda, nam string, cod int, valor float32, idp2 int) {
+
+	*ven = append(*ven, Venda{Numero: NumerodaVenda, Data: datavenda, cliente: Cliente{RG: rg, Data: data, Pessoas: Pessoas{nome, idade, endereço}}, ItemVenda[0]: ItemVenda})
+}
+func lista(NumerodaVenda int, vcs *[]ItemVenda, nam string, cod int, valor float32, idp2 int) {
+	var resultado float32
+	resultado = Somas(valor, idp2)
+	*vcs = append(*vcs, ItemVenda{Produto: Produto{Codigo: cod, Nome: nam}, Quantidade: NumerodaVenda, Valor: resultado})
+
 }
 
 func main() {
@@ -87,9 +99,11 @@ func main() {
 	var pes []Pessoas
 	var cli []Cliente
 	var pro []Produto
-	// var proaux []Produto
+	// var proaux []float32
+
+	// Produto
 	var ven []Venda
-	// var iten
+	var iten []ItemVenda
 	var id, idp1, idp2 int //idp3, idp4, idp5 int
 	var datavenda string
 
@@ -313,12 +327,29 @@ func main() {
 					fmt.Printf("ID: %d \t Codigo %d \t Nome: %s \t Valor: %.2f  \n", i, V.Codigo, V.Nome, V.Valor)
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
 				}
-
+				// Produto
+				// Codigo int
+				// Nome   string
+				// Valor  float32
+				// item
+				// Produto    Produto
+				// Quantidade int
+				// Valor      float32
 				fmt.Printf("Produto ID - Numero de produtos:\n")
 				fmt.Scan(&idp1, &idp2)
+				var nam string
+				var cod int
+				cod = pro[idp1].Codigo
+				nam = pro[idp1].Nome
+				valor := pro[idp1].Valor
+
+				// ItemVenda=append(ItemVenda,Produto: Produto{Codigo:pro[idp1].Codigo,Nome:pro[idp1].Nome}, Quantidade:idp2)
+				// proaux=append(proaux,resultado)
 				fmt.Printf("Data:\n")
 				fmt.Scan(&datavenda)
-				Total(NumerodaVenda, &ven, id, idp1, idp2, datavenda, nome2, Idade2, rg2, data2, end2)
+				lista(NumerodaVenda, &iten, nam, cod, valor, idp2)
+				Total(NumerodaVenda, &ven, id, idp1, idp2, datavenda, nome2, Idade2, rg2, data2, end2, &iten, nam, cod, valor, idp2)
+
 			}
 
 		//Sair
