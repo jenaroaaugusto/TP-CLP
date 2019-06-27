@@ -34,10 +34,17 @@ type Produto struct {
 	Valor  float32
 }
 
+type Totalizavel interface{
+	func total()
+	type Venda struct
+}
+
+
 // type Totalizavel interface{
 // 	// func Total()
 // 	// type Venda struct{}
 // }
+
 // Venda(subclasse  de  Totalizavel):  número  (int),  data  (Date),  cliente
 // (Cliente), itens (lista ou array de ItemVenda).O método total deve calcular a soma dos totais de cada item;
 type Venda struct {
@@ -103,7 +110,9 @@ func main() {
 
 	// Produto
 	var ven []Venda
+
 	var iten []ItemVenda
+
 	var id, idp1, idp2 int //idp3, idp4, idp5 int
 	var datavenda string
 
@@ -113,7 +122,8 @@ func main() {
 		var controle4 int
 		var controle int
 		var controlepalavras string
-		var NumerodaVenda int
+		var controleFloat float32
+		//var NumerodaVenda int
 
 		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
 		fmt.Println("\n 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
@@ -244,7 +254,7 @@ func main() {
 		//Produto
 		case 3:
 			fmt.Printf("\n ||| Produto ||| \n")
-			fmt.Printf("\n 1:Cadastrar Produto \t 2: Lista de Produtos \t 3:Remover um produto 4:Alterar Produtos \n")
+			fmt.Printf("\n 1:Cadastrar Produto \t 2: Lista de Produtos \t 3:Remover um produto \t 4:Alterar Produtos \n")
 			fmt.Scan(&controle1)
 			switch controle1 {
 			//Cadastrar
@@ -292,7 +302,37 @@ func main() {
 				}
 			// ALterar Produto
 			case 4:
-
+				fmt.Printf("\n|\t| Alteração dos Clientes |\t|\n")
+				fmt.Printf("Escolha pelo ID")
+				for i, V := range pro {
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+					fmt.Printf("ID: %d \t Codigo %d \t Nome: %s \t Valor: %.2f  \n", i, V.Codigo, V.Nome, V.Valor)
+					fmt.Printf("\n-----------------------------------------------------------------------------\n")
+				}
+				fmt.Printf("\nDigite ID: \n")
+				fmt.Scan(&controle3)
+				// s := len(cli) Tratar os erros
+				var interacao int
+				for interacao != 10 {
+					fmt.Printf("\n Alterar selecione-:> 1:Codigo 2:Nome 3:Valor 4:Concluido\n")
+					fmt.Scan(&controle4)
+					if controle4 == 1 {
+						fmt.Printf("Digite o novo código:")
+						fmt.Scan(&controle)
+						pro[controle3].Codigo = controle
+					} else if controle4 == 2 {
+						fmt.Printf("Digite o novo nome: ")
+						fmt.Scan(&controlepalavras)
+						pro[controle3].Nome = controlepalavras
+					} else if controle4 == 3 {
+						fmt.Printf("Digite o novo Valor:")
+						fmt.Scan(&controleFloat)
+						pro[controle3].Valor = controleFloat
+					} else if controle4 == 4 {
+						interacao = 10
+						break
+					}
+				}
 			}
 
 		//Venda
@@ -305,6 +345,7 @@ func main() {
 
 			case 1:
 				NumerodaVenda = NumerodaVenda + 1
+
 				for i, V := range cli {
 					fmt.Printf("\n-----------------------------------------------------------------------------\n")
 					fmt.Printf("ID %d Nome: %s \t Idade: %d \nRG:%s \n", i, V.Pessoas.Nome, V.Pessoas.Idade, V.RG)
