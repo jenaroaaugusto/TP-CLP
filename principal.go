@@ -98,12 +98,13 @@ func main() {
 		var controle4 int
 		var controle int
 		var controlepalavras string
+
 		fmt.Println("\n|\t|Sistema De Gestão|\t|\n")
 		fmt.Println("\n1: Gereciar Pessoas 2:Cliente 3:Produto 4:Totalizavel 5: Sair")
 		fmt.Scan(&controle)
-
 		// var pes [100]Pessoas
 		switch controle {
+<<<<<<< HEAD
 		//Gerencias Pessoas
 		case 1:
 			fmt.Printf("\n ||| Pessoas ||| \n")
@@ -196,6 +197,7 @@ func main() {
 						interacao = 10
 						break
 					}
+
 				}
 				// Remover
 			case 4:
