@@ -422,10 +422,11 @@ func main() {
 		case 5:
 			sum = 10
 		}
-		defer func() {
+		
+	}
+	defer func() {
         if err := recover(); err != nil {
             fmt.Println("Ocorreu um erro: ", err)
         }
     }()
-	}
 }
